@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNG Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            background-color: #3f3f3f;
+        }
+        #result {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <img src="diddy.png" alt="diddy" width="200" height="200">
+    <h1>Diddy Party Game</h1>
+    <p id="result">Click the button to see what you did at the Diddy Party!</p>
+    <button onclick="rollDice()">Roll Dice</button>
+
+    <script>
+        const descriptions = [
+            "You were found by Diddy. You are now covered in baby oil, and stuck getting the juiciest BBC you've ever had.",
+            "You walked in on Diddy and Meek Mill making their next mixtape that 'slaps'.",
+            "You got raped by everyone.",
+            "You found yourself starting to become fond of these parties. You're cumming to the next one for sure.",
+            "You hacked the security system and leaked all the footage... of you getting fucked by Diddy..",
+            "You opened to door when the cops knocked, thinking it was another celebrity..",
+            "You got caught sneaking into Diddy's private office.",
+            "You accidentally texted Diddy while gossiping about him.",
+            "You tried to bribe the bartender for extra shots. Diddy heard you and gave you some more 'shots'.",
+            "You spilled a tray of white stuff on a celebrity guest.",
+            "You were caught hiding in the coatroom from Diddy.",
+            "You rigged the poker game and got busted.",
+            "You tried to steal the baby oil. You were caught.",
+            "You challenged Diddy to a rape battle and lost miserably.",
+            "You unplugged the music to give a surprise speech nobody wanted. You got raped by the submissive, Meek Mill.",
+            "You swapped Diddy's drink with sparkling water as a prank. He raped you.",
+            "You got caught taking selfies in the orgy. You got raped..",
+            "You accidentally turned on Diddy, but Meek Mill was nearby so you weren't raped. Meek Mill was though..",
+            "You hacked the security system and leaked all the footage. Luckily, you weren't in any of the footage. 50 Cent likes you.",
+            "You escaped the Diddy Party!."
+        ];
+
+        function rollDice() {
+            const resultElement = document.getElementById('result');
+            let counter = 0;
+            const maxRolls = 1; // Number of animation steps
+            const interval = 100; // Time between steps (ms)
+
+            // Simulate rolling numbers
+            const intervalId = setInterval(() => {
+                counter++;
+                const randomNumber = Math.floor(Math.random() * 20) + 1;
+                resultElement.textContent = `Rolling: ${randomNumber}`;
+
+                if (counter >= maxRolls) {
+                    clearInterval(intervalId);
+                    const finalNumber = Math.floor(Math.random() * 20) + 1;
+                    resultElement.textContent = `You rolled: ${finalNumber}. ${descriptions[finalNumber - 1]}`;
+                }
+            }, interval);
+        }
+    </script>
+</body>
+</html>
